@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Tracking Project</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Segoe+UI:wght@400;600&display=swap');
+    /* Main Website Color Scheme and Fonts */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #8205E6, #5E0085);
+      color: #F3F2F1;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: #FFB900;
+      margin-bottom: 15px;
+    }
+    h1 { font-size: 2.5em; }
+    h2 { 
+      font-size: 2em; 
+      border-bottom: 2px solid #FFB900; 
+      padding-bottom: 5px; 
+    }
+    p { margin-bottom: 20px; }
+    ul {
+      margin-bottom: 20px;
+      list-style: disc;
+      padding-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #FFB900;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .demo-video {
+      margin-top: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      text-align: center;
+      border-radius: 5px;
+    }
+    a {
+      color: #FFB900;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Customer Tracking Project</h1>
+    
+    <div class="section">
+      <h2>Why We Created This Solution</h2>
+      <p>The Customer Service Ticketing System was developed to streamline customer support processes by providing an efficient way to track and manage service requests. It enables better response times, transparency, and customer satisfaction by centralizing customer interactions.</p>
+    </div>
+    
+    <div class="section">
+      <h2>Purpose of the Project</h2>
+      <ul>
+        <li>To provide a structured system for managing customer support tickets.</li>
+        <li>To enhance efficiency in handling customer issues.</li>
+        <li>To enable better tracking of ticket status and resolution times.</li>
+        <li>To offer an integrated system using Power Platform’s model-driven app capabilities.</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h2>Tables & Relationships Explanation</h2>
+      
+      <h3>1. Customers Table (Primary Table)</h3>
+      <p><strong>Purpose:</strong> Stores customer details who raise service tickets.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Customer ID (Primary Key)</td>
+            <td>Autonumber</td>
+            <td>Unique identifier for each customer</td>
+          </tr>
+          <tr>
+            <td>Full Name</td>
+            <td>Text</td>
+            <td>Customer's full name</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>Email</td>
+            <td>Customer's email address</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>Phone</td>
+            <td>Contact number of the customer</td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>Text</td>
+            <td>Customer's address (Optional)</td>
+          </tr>
+          <tr>
+            <td>Created On</td>
+            <td>Date/Time</td>
+            <td>Auto-generated when a new customer is added</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Relationships:</strong> Customers (1) → (M) Tickets: A single customer can create multiple support tickets.</p>
+      
+      <h3>2. Tickets Table (Core Table)</h3>
+      <p><strong>Purpose:</strong> Tracks customer issues and service requests.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ticket ID (Primary Key)</td>
+            <td>Autonumber</td>
+            <td>Unique identifier for each ticket</td>
+          </tr>
+          <tr>
+            <td>Title</td>
+            <td>Text</td>
+            <td>Short summary of the issue</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>Multiline Text</td>
+            <td>Detailed description of the problem</td>
+          </tr>
+          <tr>
+            <td>Resolution Notes</td>
+            <td>Multiline Text</td>
+            <td>Notes on how the issue was resolved</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Relationships:</strong> Tickets (M) → (1) Customers, Tickets (M) → (1) Agents, Tickets (M) → (1) Status.</p>
+      
+      <h3>3. Agents Table (Support Team Members)</h3>
+      <p><strong>Purpose:</strong> Stores details of support agents handling customer tickets.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agent ID (Primary Key)</td>
+            <td>Autonumber</td>
+            <td>Unique identifier for each agent</td>
+          </tr>
+          <tr>
+            <td>Full Name</td>
+            <td>Text</td>
+            <td>Agent’s full name</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>Email</td>
+            <td>Official email of the agent</td>
+          </tr>
+          <tr>
+            <td>Department</td>
+            <td>Choice (IT, Billing, Technical)</td>
+            <td>Specifies the team the agent belongs to</td>
+          </tr>
+          <tr>
+            <td>Availability Status</td>
+            <td>Choice (Available, Busy, Offline)</td>
+            <td>Indicates agent’s work status</td>
+          </tr>
+          <tr>
+            <td>Created On</td>
+            <td>Date/Time</td>
+            <td>Timestamp when the agent was added</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <h3>4. Status Table (Lookup Table)</h3>
+      <p><strong>Purpose:</strong> Stores possible states for service tickets.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Status ID (Primary Key)</td>
+            <td>Autonumber</td>
+            <td>Unique identifier for each status</td>
+          </tr>
+          <tr>
+            <td>Status Name</td>
+            <td>Choice</td>
+            <td>Options: New, In Progress, Resolved, Closed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="section">
+      <h2>Key Features & Implementation</h2>
+      <h3>1. Subgrid Implementation</h3>
+      <p><strong>Where?</strong> On the Customer Form, showing all tickets linked to a customer.</p>
+      <p><strong>Why?</strong> This helps support teams quickly access and manage customer issues.</p>
+      <p><strong>Steps:</strong></p>
+      <ul>
+        <li>Open Power Apps &gt; Dataverse &gt; Tables &gt; Customers</li>
+        <li>Go to Forms and open the Main Form</li>
+        <li>Add a Subgrid Component and link it to the Tickets Table</li>
+        <li>Set the View to display Active Tickets</li>
+        <li>Save &amp; Publish</li>
+      </ul>
+      <h3>2. Power Fx / Business Rule Formulas</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Functionality</th>
+            <th>Formula / Rule</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Auto-Assign Ticket to an Agent</td>
+            <td>If Agent.Availability = "Available", assign ticket to that agent</td>
+          </tr>
+          <tr>
+            <td>Set Ticket Creation Date Automatically</td>
+            <td>Ticket.CreatedOn = Now()</td>
+          </tr>
+          <tr>
+            <td>Auto-Update Ticket Status</td>
+            <td>If Ticket.ResolutionNotes is filled, change Status to "Resolved"</td>
+          </tr>
+          <tr>
+            <td>Calculate Resolution Time</td>
+            <td>Ticket.ResolutionTime = Ticket.ResolvedOn - Ticket.CreatedOn</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="section">
+      <h2>Scenario: How This Project is Used</h2>
+      <p>A retail company needs to track customer complaints and ensure timely resolution. The workflow is as follows:</p>
+      <ul>
+        <li>Customers submit issues via email or a self-service portal.</li>
+        <li>The support team logs the issue in the Tickets Table.</li>
+        <li>The system auto-assigns available agents.</li>
+        <li>Agents update ticket status, and customers receive notifications.</li>
+        <li>The manager reviews reports on resolution times for performance tracking.</li>
+      </ul>
+    </div>
+    
+    <div class="section demo-video">
+      <h2>Project Demo</h2>
+      <p>(A section where a demo video showcasing the system in action would be embedded.)</p>
+    </div>
+  </div>
+</body>
+</html>
+

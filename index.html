@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAYAKRISHNAN MR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #8205E6, #5E0085);
+            color: #F3F2F1;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .glass:hover {
+            transform: translateY(-5px);
+        }
+        .nav-link:hover {
+            color: #FFB900;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-purple-900 text-white">
+    
+    <!-- Navigation Bar -->
+    <nav class="py-6 fixed top-0 w-full bg-opacity-80 backdrop-blur-lg shadow-lg z-10 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-2xl font-bold text-yellow-400">JAYAKRISHNAN MR</h1>
+            <ul class="flex space-x-6 text-lg">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6 fade-in">
+        <img src="https://via.placeholder.com/1600x900" alt="Hero Image" class="w-full max-h-96 object-cover rounded-lg shadow-lg mb-6">
+        <div class="glass max-w-3xl">
+            <h2 class="text-5xl font-extrabold">Power Platform Portfolio</h2>
+            <p class="mt-4 text-lg opacity-80">Showcasing My Expertise in Model-Driven Apps & Dataverse</p>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="container mx-auto py-20 px-6 text-center fade-in">
+        <h2 class="text-4xl font-bold text-yellow-400">Projects</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            <a href="project1.html" class="glass block">
+                <h3 class="text-xl font-semibold">⭐⭐⭐ Customer Service Ticketing System</h3>
+                <p class="mt-2">A model-driven app for managing customer support tickets efficiently.</p>
+            </a>
+            <a href="project2.html" class="glass block">
+                <h3 class="text-xl font-semibold">⭐⭐ AI Chatbot Integration</h3>
+                <p class="mt-2">Enhancing customer service with AI-powered automation.</p>
+            </a>
+            <a href="project3.html" class="glass block">
+                <h3 class="text-xl font-semibold">⭐ Simple Data Entry Form</h3>
+                <p class="mt-2">A basic model-driven form for structured data collection.</p>
+            </a>
+            <a href="project4.html" class="glass block">
+                <h3 class="text-xl font-semibold">⭐⭐⭐⭐ Workflow Automation System</h3>
+                <p class="mt-2">A Power Platform solution streamlining business workflows.</p>
+            </a>
+            <a href="project5.html" class="glass block">
+                <h3 class="text-xl font-semibold">⭐⭐⭐⭐⭐ Advanced CRM Dashboard</h3>
+                <p class="mt-2">A comprehensive Power Platform dashboard for business intelligence.</p>
+            </a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="bg-purple-800 py-20 fade-in">
+        <div class="container mx-auto text-center px-6">
+            <h2 class="text-4xl font-bold text-yellow-400">About Me</h2>
+            <p class="mt-4 max-w-2xl mx-auto">I specialize in Power Platform development, creating scalable model-driven apps and AI-driven solutions.</p>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto py-20 px-6 text-center fade-in">
+        <h2 class="text-4xl font-bold text-yellow-400">Contact Me</h2>
+        <p class="mt-4">Feel free to reach out for collaborations or inquiries.</p>
+        <a href="mailto:your.email@example.com" class="mt-6 inline-block bg-yellow-600 text-white py-3 px-8 rounded-lg hover:bg-yellow-500 shadow-md">Email Me</a>
+        <div class="mt-6 flex justify-center space-x-4">
+            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🔗 LinkedIn</a>
+            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🐦 Twitter</a>
+            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">💼 GitHub</a>
+        </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="text-center py-6 bg-purple-800 mt-10">
+        <p class="opacity-70">&copy; 2025 JAYAKRISHNAN MR. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
+
