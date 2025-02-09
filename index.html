@@ -7,118 +7,287 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700&display=swap');
+
+        :root {
+            --primary-purple: #8205E6;
+            --secondary-purple: #5E0085;
+            --accent-yellow: #FFB900;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #8205E6, #5E0085);
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
             color: #F3F2F1;
             scroll-behavior: smooth;
         }
+
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
         }
+
         .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .glass:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-        .nav-link:hover {
-            color: #FFB900;
+
+        .certification-card {
+            perspective: 1000px;
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-out forwards;
+
+        .certification-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
         }
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
+
+        .certification-card:hover .certification-inner {
+            transform: rotateY(10deg) rotateX(2deg);
+        }
+
+        .photo-glow {
+            box-shadow: 0 0 30px rgba(255, 185, 0, 0.3);
+        }
+
+        @keyframes float {
+            0%, 100% {
                 transform: translateY(0);
             }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .aws-badge-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .aws-badge-link:hover {
+            transform: scale(1.1);
+        }
+
+        .python-badge-link {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .python-badge-link:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dark mode styles */
+        .dark {
+            background: linear-gradient(135deg, #0a0a1e, #06112e); /* Even darker background */
+            color: #f0f0f0; /* Brighter text color */
+        }
+
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.3); /* Darker glass effect */
+        }
+
+        .dark .text-yellow-400 {
+            color: #ffe135; /* Slightly brighter yellow */
+        }
+
+        .dark .bg-yellow-600 {
+            background-color: #9b7209; /* Darker yellow background */
+        }
+
+        .dark .bg-purple-800 {
+            background-color: #330066; /* Deeper purple background */
         }
     </style>
 </head>
 <body class="bg-purple-900 text-white">
-    
-    <!-- Navigation Bar -->
-    <nav class="py-6 fixed top-0 w-full bg-opacity-80 backdrop-blur-lg shadow-lg z-10 transition-all duration-300">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <h1 class="text-2xl font-bold text-yellow-400">JAYAKRISHNAN MR</h1>
-            <ul class="flex space-x-6 text-lg">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+
+<!-- Navigation Bar -->
+<nav class="py-6 fixed top-0 w-full bg-opacity-80 backdrop-blur-lg shadow-lg z-50">
+    <div class="container mx-auto flex justify-between items-center px-6">
+        <h1 class="text-2xl font-bold text-yellow-400">Power Platform Developer</h1>
+        <ul class="flex space-x-6 text-lg">
+            <li><a href="#home" class="nav-link hover:text-yellow-400 transition-colors">Home</a></li>
+            <li><a href="#projects" class="nav-link hover:text-yellow-400 transition-colors">Projects</a></li>
+            <li><a href="#contact" class="nav-link hover:text-yellow-400 transition-colors">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Enhanced Home Section -->
+<section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6">
+    <div class="container mx-auto grid lg:grid-cols-2 gap-8 items-center">
+        <!-- Left Column -->
+        <div class="space-y-8">
+            <!-- About Me Card -->
+            <div class="glass p-8">
+                <h1 class="text-4xl font-bold mb-4">Hi,</h1>
+                 <h6 class="text-4xl font-bold mb-4">I'm Jayakrishnan M R</h6>
+                <p class="text-lg opacity-90 leading-relaxed">
+                    I'm passionate about building intelligent solutions with Microsoft Power Platform and AI integration. As a Certified AWS Cloud Practitioner and PL-900 specialist, I focus on developing scalable enterprise applications. I have strong expertise in Power Apps, Power Automate, and Power BI, enabling businesses to streamline workflows and enhance productivity.
+                </p>
+                <p class="text-lg opacity-90 leading-relaxed">
+                    Proficient in Power Apps, Power Automate, and Power BI, with a strong foundation in low-code
+                    development and automation.
+                </p>
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold mb-4">Certifications</h2>
+            </div>
+            <!-- Certifications Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://www.credly.com/badges/b3072b61-812e-4551-a16d-ceeee859c4b1/public_url"
+                   target="_blank" class="glass certification-card p-6 aws-badge-link">
+                    <div class="certification-inner">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-yellow-400 text-2xl">🏅</div>
+                            <div>
+                                <h3 class="font-bold">AWS Certified</h3>
+                                <p class="text-sm opacity-80">Cloud Practitioner</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.hackerrank.com/certificates/ce2e6fb84066" target="_blank"
+                   class="glass certification-card p-6 python-badge-link">
+                    <div class="certification-inner">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-yellow-400 text-2xl">🏅</div>
+                            <div>
+                                <h3 class="font-bold">Python Basic</h3>
+                                <p class="text-sm opacity-80">HackerRank</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="glass certification-card p-6">
+                    <div class="certification-inner">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-yellow-400 text-2xl">🎖️</div>
+                            <div>
+                                <h3 class="font-bold">PL-900</h3>
+                                <p class="text-sm opacity-80">Power Platform Fundamentals</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="h-screen flex flex-col items-center justify-center text-center px-6 fade-in">
-        <img src="https://via.placeholder.com/1600x900" alt="Hero Image" class="w-full max-h-96 object-cover rounded-lg shadow-lg mb-6">
-        <div class="glass max-w-3xl">
-            <h2 class="text-5xl font-extrabold">Power Platform Portfolio</h2>
-            <p class="mt-4 text-lg opacity-80">Showcasing My Expertise in Model-Driven Apps & Dataverse</p>
+
+        <!-- Right Column -->
+        <div class="flex justify-center relative">
+            <div class="relative float-animation">
+                <img src="https://source.unsplash.com/random" alt="Profile"
+                     class="rounded-2xl w-full max-w-md photo-glow transform transition-all">
+                <div class="absolute inset-0 border-2 border-yellow-400/30 rounded-2xl"></div>
+            </div>
+            <p class="text-xs mt-2">Image from <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
         </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="container mx-auto py-20 px-6 text-center fade-in">
-        <h2 class="text-4xl font-bold text-yellow-400">Projects</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            <a href="project1.html" class="glass block">
-                <h3 class="text-xl font-semibold">⭐⭐⭐ Customer Service Ticketing System</h3>
-                <p class="mt-2">A model-driven app for managing customer support tickets efficiently.</p>
-            </a>
-            <a href="project2.html" class="glass block">
-                <h3 class="text-xl font-semibold">⭐⭐ AI Chatbot Integration</h3>
-                <p class="mt-2">Enhancing customer service with AI-powered automation.</p>
-            </a>
-            <a href="project3.html" class="glass block">
-                <h3 class="text-xl font-semibold">⭐ Simple Data Entry Form</h3>
-                <p class="mt-2">A basic model-driven form for structured data collection.</p>
-            </a>
-            <a href="project4.html" class="glass block">
-                <h3 class="text-xl font-semibold">⭐⭐⭐⭐ Workflow Automation System</h3>
-                <p class="mt-2">A Power Platform solution streamlining business workflows.</p>
-            </a>
-            <a href="project5.html" class="glass block">
-                <h3 class="text-xl font-semibold">⭐⭐⭐⭐⭐ Advanced CRM Dashboard</h3>
-                <p class="mt-2">A comprehensive Power Platform dashboard for business intelligence.</p>
-            </a>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="bg-purple-800 py-20 fade-in">
-        <div class="container mx-auto text-center px-6">
-            <h2 class="text-4xl font-bold text-yellow-400">About Me</h2>
-            <p class="mt-4 max-w-2xl mx-auto">I specialize in Power Platform development, creating scalable model-driven apps and AI-driven solutions.</p>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="container mx-auto py-20 px-6 text-center fade-in">
-        <h2 class="text-4xl font-bold text-yellow-400">Contact Me</h2>
-        <p class="mt-4">Feel free to reach out for collaborations or inquiries.</p>
-        <a href="mailto:your.email@example.com" class="mt-6 inline-block bg-yellow-600 text-white py-3 px-8 rounded-lg hover:bg-yellow-500 shadow-md">Email Me</a>
-        <div class="mt-6 flex justify-center space-x-4">
-            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🔗 LinkedIn</a>
-            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🐦 Twitter</a>
-            <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">💼 GitHub</a>
-        </div>
-    </section>
-    
-    <!-- Footer Section -->
-    <footer class="text-center py-6 bg-purple-800 mt-10">
-        <p class="opacity-70">&copy; 2025 JAYAKRISHNAN MR. All rights reserved.</p>
-    </footer>
-    
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="container mx-auto py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold text-yellow-400 mb-12">Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="project1.html" class="glass p-6 block text-left hover:scale-105 transition-transform">
+            <h3 class="text-xl font-semibold">⭐⭐⭐ Customer Service Ticketing System</h3>
+            <p class="mt-2 opacity-80">A model-driven app for managing customer support tickets efficiently.</p>
+        </a>
+        <a href="project2.html" class="glass p-6 block text-left hover:scale-105 transition-transform">
+            <h3 class="text-xl font-semibold">⭐⭐ AI Chatbot Integration</h3>
+            <p class="mt-2 opacity-80">Enhancing customer service with AI-powered automation.</p>
+        </a>
+        <a href="project3.html" class="glass p-6 block text-left hover:scale-105 transition-transform">
+            <h3 class="text-xl font-semibold">⭐ Simple Data Entry Form</h3>
+            <p class="mt-2 opacity-80">A basic model-driven form for structured data collection.</p>
+        </a>
+        <a href="project4.html" class="glass p-6 block text-left hover:scale-105 transition-transform">
+            <h3 class="text-xl font-semibold">⭐⭐⭐⭐ Workflow Automation System</h3>
+            <p class="mt-2 opacity-80">A Power Platform solution streamlining business workflows.</p>
+        </a>
+        <a href="project5.html" class="glass p-6 block text-left hover:scale-105 transition-transform">
+            <h3 class="text-xl font-semibold">⭐⭐⭐⭐⭐ Advanced CRM Dashboard</h3>
+            <p class="mt-2 opacity-80">A comprehensive Power Platform dashboard for business intelligence.</p>
+        </a>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="container mx-auto py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold text-yellow-400 mb-8">Contact Me</h2>
+    <p class="text-lg opacity-80 mb-8">Feel free to reach out for collaborations or inquiries. I'm always open to discussing new opportunities and projects.</p>
+    <a href="mailto:krishna999.info@gmail.com"
+       class="inline-block bg-yellow-600 text-white py-3 px-8 rounded-lg hover:bg-yellow-500 shadow-md transition-colors">Email
+        Me</a>
+    <div class="mt-8 flex justify-center space-x-6">
+        <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🔗 LinkedIn</a>
+        <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">🐦 Twitter</a>
+        <a href="#" class="text-yellow-400 hover:text-yellow-500 text-2xl">💼 GitHub</a>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="text-center py-6 bg-purple-800 mt-10">
+    <p class="opacity-70">&copy; 2025 JAYAKRISHNAN MR. All rights reserved.</p>
+</footer >
+
+<!-- Theme Toggle -->
+<button id="theme-toggle" class="fixed bottom-6 right-6 p-3 rounded-full glass text-yellow-400">
+    🌓
+</button>
+
+<!-- Scroll to Top -->
+<button id="scroll-top" class="fixed bottom-6 left-6 p-3 rounded-full glass text-yellow-400">
+    ↑
+</button>
+
+<script>
+    // Scroll animations
+    document.querySelectorAll('.skill-progress').forEach(progress => {
+        progress.style.width = progress.getAttribute('data-percent');
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Function to set theme
+    function setTheme(isDark) {
+        if (isDark) {
+            htmlElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Check for stored theme preference on page load
+    if (localStorage.getItem('theme') === 'dark') {
+        setTheme(true);
+    }
+
+    // Theme toggle event listener
+    themeToggle.addEventListener('click', () => {
+        const isDark = htmlElement.classList.toggle('dark');
+        setTheme(isDark);
+    });
+
+    // Scroll to top
+    document.getElementById('scroll-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
+
 </body>
 </html>
-
